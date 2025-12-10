@@ -1,8 +1,6 @@
 from pathlib import Path
 
-# ----------------------------------------------------
-#  ----------------SETTINGS --------------------------
-# ----------------------------------------------------
+#  SETTINGS 
 
 # List of tickers used in the portfolio
 TICKERS = ["AAPL", "MSFT", "AMZN", "GOOGL", "FB","T", "GS"]
