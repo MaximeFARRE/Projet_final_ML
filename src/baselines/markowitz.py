@@ -11,6 +11,7 @@ def compute_min_variance_weights(returns):
    
     # Covariance matrix of returns
     cov = returns.cov()
+    # Vector [1;1;1...] same shape cov for calculations MVP formula
     ones = np.ones(cov.shape[0])
 
     # Inverse covariance matrix

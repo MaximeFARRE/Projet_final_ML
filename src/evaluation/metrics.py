@@ -24,7 +24,7 @@ def simple_metrics(equity):
     # max drawdown
     max_dd = compute_max_drawdown(equity)
 
-    # annual return approximation (252 trading days)
+    # annual return approximation 252 trading days
     n_days = len(equity)
     if n_days > 1:
         annual_return = (equity.iloc[-1] / equity.iloc[0]) ** (252 / (n_days - 1)) - 1

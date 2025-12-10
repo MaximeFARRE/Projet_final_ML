@@ -28,7 +28,7 @@ from src.baselines.markowitz import (
 from src.evaluation.metrics import simple_metrics
 
 
-def main() -> None:
+def main() :
     REPORT_FIG_DIR.mkdir(parents=True, exist_ok=True)
     REPORT_TABLE_DIR.mkdir(parents=True, exist_ok=True)
 
