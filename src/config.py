@@ -1,8 +1,6 @@
 from pathlib import Path
 
-# ----------------------------------------------------
-#  ----------------SETTINGS --------------------------
-# ----------------------------------------------------
+#  SETTINGS 
 
 # List of tickers used in the portfolio
 TICKERS = ["AAPL", "MSFT", "AMZN", "GOOGL", "FB","T", "GS"]
@@ -17,7 +15,7 @@ TEST_RATIO = 0.3
 #  random seed
 SEED = 42
 
-# PATHS (DO NOT EDIT)
+# PATHS 
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]

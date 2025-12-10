@@ -17,7 +17,7 @@ from src.data.preprocess import compute_returns
 from src.features.technical_indicators import compute_technical_features
 
 
-def main() -> None:
+def main():
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
     REPORT_FIG_DIR.mkdir(parents=True, exist_ok=True)
 

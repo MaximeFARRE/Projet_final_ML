@@ -5,26 +5,29 @@ import numpy as np
 import pandas as pd
 
 
-def compute_min_variance_weights(returns: pd.DataFrame) -> np.ndarray:
+def compute_min_variance_weights(returns):
  
     # compute the Minimum Variance Portfolio (MVP)
    
     # Covariance matrix of returns
-    cov = returns.cov().values
+    cov = returns.cov()
+    # Vector [1;1;1...] same shape cov for calculations MVP formula
     ones = np.ones(cov.shape[0])
 
     # Inverse covariance matrix
     inv_cov = np.linalg.inv(cov)
 
     # Apply MVP closed-form formula
-    raw_weights = inv_cov @ ones
+    #muliplying the inverse covariance matrix by a vector of ones
+    raw_weights = np.dot(inv_cov, ones)
+    # normalize
     weights = raw_weights / raw_weights.sum()
 
     return weights
 
 
 # Compute the equity curve of a Markowitz Minimum Variance portfolio
-def equity_curve_markowitz(prices: pd.DataFrame, weights: np.ndarray) -> pd.Series:
+def equity_curve_markowitz(prices, weights) :
    
     
     prices = prices.dropna()

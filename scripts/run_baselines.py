@@ -12,6 +12,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Make sure we can import from src/
+#Correct error by ChatGPT
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
@@ -27,7 +28,7 @@ from src.baselines.markowitz import (
 from src.evaluation.metrics import simple_metrics
 
 
-def main() -> None:
+def main() :
     REPORT_FIG_DIR.mkdir(parents=True, exist_ok=True)
     REPORT_TABLE_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -36,7 +37,7 @@ def main() -> None:
     prices_train, prices_test = split_train_test(prices)
 
     # Equal-Weight Buy & Hold baseline
-    print("\n--- Equal-Weight baseline ---")
+    print("\n Equal-Weight baseline")
 
     equity_train_eq = equity_curve_equal_weight(prices_train)
     equity_test_eq = equity_curve_equal_weight(prices_test)
