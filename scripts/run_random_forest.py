@@ -27,7 +27,7 @@ from src.models.random_forest import (
 )
 
 
-def main() -> None:
+def main():
     REPORT_FIG_DIR.mkdir(parents=True, exist_ok=True)
     REPORT_TABLE_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -54,11 +54,11 @@ def main() -> None:
 
     print("Feature Selection (ANOVA) Results ")
     for ticker in TICKERS:
-        print(f"{ticker}: {meta[ticker]['selected_features']}")
+        print("{ticker}: {meta[ticker]['selected_features']}")
 
     print("Random Forest best hyperparameters (GridSearchCV)")
     for ticker in TICKERS:
-        print(f"{ticker}: {meta[ticker]['best_params']}")
+        print("{ticker}: {meta[ticker]['best_params']}")
 
     #Backtest RF portfolio on test period
     equity_rf = backtest_rf_portfolio(models, meta)

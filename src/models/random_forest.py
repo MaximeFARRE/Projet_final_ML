@@ -11,21 +11,15 @@ from sklearn.model_selection import GridSearchCV
 from src.features.feature_selection import anova_feature_selection
 
 
-def build_rf_data_for_ticker(
-    prices: pd.DataFrame,
-    features: pd.DataFrame,
-    ticker: str,
-    train_end_date: pd.Timestamp,
-) -> Tuple[pd.DataFrame, pd.Series, pd.DataFrame, pd.Series] | None:
-    # build supervised dataset for one ticker
-    # X: technical features at date t
-    # y: 1 if return_{t+1} > 0, else 0
+def build_rf_data_for_ticker(prices, features, ticker, train_end_date):
 
     cols = [c for c in features.columns if c.startswith(f"{ticker}_")]
     if not cols:
         # no features for this ticker, skip it
         return None
-
+# build supervised dataset for one ticker
+    # X: technical features at date t
+    # y: 1 if return_{t+1} > 0, else 0
     X_all = features[cols].copy()
 
     # next-day returns as target
@@ -50,17 +44,7 @@ def build_rf_data_for_ticker(
     return X_train, y_train, X_test, ret_next_test
 
 
-def train_random_forest_models(
-    prices: pd.DataFrame,
-    features: pd.DataFrame,
-    tickers: list[str],
-    train_end_date: pd.Timestamp,
-    n_estimators: int = 200,
-    max_depth: int | None = None,
-    random_state: int = 42,
-    top_k_features: int = 5,
-    use_grid_search: bool = True,
-) -> Tuple[Dict[str, RandomForestClassifier], Dict[str, dict]]:
+def train_random_forest_models(prices, features, tickers, train_end_date):
     # train one random forest per ticker to predict next-day up/down
 
     models: Dict[str, RandomForestClassifier] = {}
@@ -135,11 +119,7 @@ def train_random_forest_models(
     return models, meta
 
 
-def backtest_rf_portfolio(
-    models: Dict[str, RandomForestClassifier],
-    meta: Dict[str, dict],
-    initial_capital: float = 1.0,
-) -> pd.Series:
+def backtest_rf_portfolio(models, meta, initial_capital=1.0):
     # backtest a long-only rf-based portfolio on the test period
 
     tickers = list(models.keys())

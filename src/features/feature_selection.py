@@ -5,11 +5,7 @@ import pandas as pd
 from sklearn.feature_selection import f_classif
 
 
-def anova_feature_selection(
-    X: pd.DataFrame,
-    y: pd.Series,
-    top_k: int = 5,
-) -> list[str]:
+def anova_feature_selection(X, y, top_k=5):
     # anova f-test feature selection, returns top_k feature names
     F, pvals = f_classif(X, y)
 
