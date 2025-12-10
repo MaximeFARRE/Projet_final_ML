@@ -1,5 +1,6 @@
 #Markowitz Minimum Variance Portfolio (MVP).
-
+# baselines with lowest possible variance for a given return level
+# uses the covariance matrix of asset returns to find the optimal weights
 
 import numpy as np
 import pandas as pd
