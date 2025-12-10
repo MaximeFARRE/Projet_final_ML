@@ -8,21 +8,21 @@ PROJECT_ROOT = Path(__file__).resolve().parent
 SCRIPTS_DIR = PROJECT_ROOT / "scripts"
 
 
-def run_step(script_name: str, description: str) -> None:
-    """Run a single script from the scripts/ folder."""
-    print(f"STEP: {description}")
-    print(f"Running: {script_name}")
+def run_step(script_name: str, description: str):
+    "Run a single script from the scripts/ folder."
+    print("STEP: {description}")
+    print("Running: {script_name}")
 
     script_path = SCRIPTS_DIR / script_name
     result = subprocess.run([sys.executable, str(script_path)], check=True)
 
     if result.returncode == 0:
-        print(f" {description} completed successfully")
+        print(" {description} completed successfully")
     else:
-        print(f" {description} finished with return code {result.returncode}")
+        print(" {description} finished with return code {result.returncode}")
 
 
-def main() -> None:
+def main():
     #Data preparation
     run_step("run_prepare.py", "Prepare technical features")
 
