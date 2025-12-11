@@ -10,16 +10,16 @@ SCRIPTS_DIR = PROJECT_ROOT / "scripts"
 
 def run_step(script_name: str, description: str):
     "Run a single script from the scripts/ folder."
-    print("STEP: {description}")
-    print("Running: {script_name}")
+    # print("STEP: {description}")
+    # print("Running: {script_name}")
 
     script_path = SCRIPTS_DIR / script_name
     result = subprocess.run([sys.executable, str(script_path)], check=True)
 
-    if result.returncode == 0:
-        print(" {description} completed successfully")
-    else:
-        print(" {description} finished with return code {result.returncode}")
+    #if result.returncode == 0:
+    #    print(" {description} completed successfully")
+    #else:
+    #    print(" {description} finished with return code {result.returncode}")
 
 
 def main():
@@ -31,9 +31,6 @@ def main():
 
     #Supervised learning baseline (Random Forest)
     run_step("run_random_forest.py", "Run Random Forest supervised strategy")
-
-    #Reinforcement Learning (PPO: train + evaluate)
-    run_step("run_ppo.py", "Train and evaluate PPO agent")
 
 
 if __name__ == "__main__":
