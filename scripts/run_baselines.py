@@ -29,6 +29,7 @@ from src.evaluation.metrics import simple_metrics
 
 
 def main() :
+    # Create output directories if they don't exist
     REPORT_FIG_DIR.mkdir(parents=True, exist_ok=True)
     REPORT_TABLE_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -39,12 +40,15 @@ def main() :
     # Equal-Weight Buy & Hold baseline
     print("\n Equal-Weight baseline")
 
+    # Compute equity curves
     equity_train_eq = equity_curve_equal_weight(prices_train)
     equity_test_eq = equity_curve_equal_weight(prices_test)
 
+    # Compute metrics
     metrics_train_eq = simple_metrics(equity_train_eq)
     metrics_test_eq = simple_metrics(equity_test_eq)
 
+    # Save metrics to CSV
     pd.DataFrame([metrics_train_eq]).to_csv(
         REPORT_TABLE_DIR / "metrics_train_baseline.csv", index=False
     )
@@ -59,6 +63,7 @@ def main() :
     plt.ylabel("Portfolio value (start = 1.0)")
     plt.legend()
     plt.grid()
+    #Save figure to REPORT_FIG_DIR
     plt.savefig(REPORT_FIG_DIR / "baseline_equal_weight.png")
 
     print("Train metrics (Equal-Weight):", metrics_train_eq)
@@ -66,11 +71,12 @@ def main() :
 
     # Markowitz Minimum Variance Portfolio
     print("\nMarkowitz Minimum Variance Portfolio")
-
+    # Compute optimal weights on training set
     returns_train = compute_returns(prices_train)
     weights_mvp = compute_min_variance_weights(returns_train)
     print("Optimal Markowitz weights:", weights_mvp)
 
+    # Compute equity curves
     equity_train_mvp = equity_curve_markowitz(prices_train, weights_mvp)
     equity_test_mvp = equity_curve_markowitz(prices_test, weights_mvp)
 
