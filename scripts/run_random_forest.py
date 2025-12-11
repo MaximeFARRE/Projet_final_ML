@@ -52,7 +52,7 @@ def main():
         use_grid_search=True,
     )
 
-    print("Feature Selection (ANOVA) Results ")
+    print("Feature Selection ANOVA Results ")
     for ticker in TICKERS:
         print("{ticker}: {meta[ticker]['selected_features']}")
 
