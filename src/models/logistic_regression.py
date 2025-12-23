@@ -15,10 +15,10 @@ def train_logistic_regression_models(
     models = {}
     meta = {}
 
-    # séparation temporelle
+    # temporal separation 
     for ticker in tickers:
 
-        # Colonnes de features liées à ce ticker
+        # Columns of features related to this ticker
         prefix = f"{ticker}_"
         feature_cols = [c for c in features.columns if c.startswith(prefix)]
         feature_cols = [c for c in feature_cols if not c.endswith("_PRICE")]
@@ -28,7 +28,7 @@ def train_logistic_regression_models(
 
         X = features[feature_cols]
 
-        # Label : 1 si le rendement du lendemain est positif
+        # Label : 1 if the next day's yield is positive
         ret_col = f"{ticker}_RET"
         if ret_col not in features.columns:
             continue
