@@ -31,6 +31,8 @@ def main():
 
     #Supervised learning baseline (Random Forest)
     run_step("run_random_forest.py", "Run Random Forest supervised strategy")
+    #Supervised learning baseline (Logistic Regression)
+    run_step("run_logistic_regression.py", "Run Logistic Regression supervised strategy")
 
 
 if __name__ == "__main__":
