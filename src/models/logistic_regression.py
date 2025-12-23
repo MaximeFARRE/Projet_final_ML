@@ -1,4 +1,3 @@
-# src/models/logistic_regression.py
 # logistic regression models for supervised next-day direction prediction
 
 from typing import Dict, Tuple
